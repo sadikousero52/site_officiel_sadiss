@@ -22,22 +22,22 @@ mainNav?.querySelectorAll('a').forEach(link => {
 // =========================================================
 const articles = [
   {
-    date: "À venir",
-    title: "Robot 4WD : notre premier prototype vitrine",
-    excerpt: "Un système embarqué autonome en cours de finalisation, pensé pour les usages agricoles et l'élevage.",
+    date: "05 Août 2026",
+    title: "Table de découpe de savon solide",
+    excerpt: "Un système mécanique qui permet de découper les barres de savon solide en de petits morceau avec précision. Sa capacite de découpe est estimée de 80 morceaux.",
     domain: "technologie.html"
   },
   {
-    date: "À venir",
-    title: "Nos premiers savons : Kogui, Pamida, Santex",
-    excerpt: "Le premier lancement de SadIss en savonnerie, formulé pour la peau noire et métissée.",
-    domain: "cosmetique.html"
+    date: "25 Août 2026",
+    title: "Tamponneuse de savon",
+    excerpt: "Un système mécanique ergonomique qui permet de tamponner les morceaux de savon en leur conférant une forme et une marque avec précision.",
+    domain: "technologie.html"
   },
   {
-    date: "À venir",
-    title: "Vers une ferme avicole locale",
-    excerpt: "Identification de site, de gestionnaire et de fournisseurs : les coulisses de notre préparation en élevage.",
-    domain: "elevage.html"
+    date: "05 Août 2026",
+    title: "Produits:Savon liquide, palmida, shampoing, Balzam, eau de javel, gèle douche hydratant, savon de ménage et savon de toilette",
+    excerpt: "Produits cosmétiques pensés et fabriquer pour la peau noire et métissée",
+    domain: "cosmétique.html"
   }
 ];
 
@@ -61,14 +61,52 @@ if (articleGrid) {
 // Articles — page Cosmétique & Savonnerie (données provisoires)
 // =========================================================
 const cosmetiqueArticles = [
-  { date: "À venir", title: "Lancement des savons Kogui, Pamida, Santex", excerpt: "Notre première gamme de savons artisanaux, formulée pour la peau noire et métissée." },
-  { date: "À venir", title: "Ouverture des formations en savonnerie", excerpt: "Des sessions pratiques pour apprendre la saponification et les bonnes pratiques de fabrication." },
-  { date: "À venir", title: "Offre de lancement sur nos premiers produits", excerpt: "Une offre réservée aux premiers clients lors du lancement officiel." }
+    {
+    date: "05 Août 2026",
+    title: "Table de découpe de savon solide",
+    excerpt: "Un système mécanique qui permet de découper les barres de savon solide en de petits morceau avec précision. Sa capacite de découpe est estimée de 80 morceaux.",
+    domain: "technologie.html"
+  },
+  {
+    date: "25 Août 2026",
+    title: "Tamponneuse de savon",
+    excerpt: "Un système mécanique ergonomique qui permet de tamponner les morceaux de savon en leur conférant une forme et une marque avec précision.",
+    domain: "technologie.html"
+  },
+  {
+    date: "05 Août 2026",
+    title: "Produits:Savon liquide, palmida, shampoing, Balzam, eau de javel, gèle douche hydratant, savon de ménage et savon de toilette",
+    excerpt: "Produits cosmétiques pensés et fabriquer pour la peau noire et métissée",
+    domain: "cosmetique.html"
+  }
 ];
 
 const cosmetiqueGrid = document.getElementById('cosmetiqueArticles');
 if (cosmetiqueGrid) {
   cosmetiqueGrid.innerHTML = cosmetiqueArticles.map(a => `
+    <article class="article-card">
+      <div class="article-thumb" style="background-image:url('${a.image}');background-size:cover;background-position:center;"></div>
+      <div class="article-body">
+        <span class="article-date">${a.date}</span>
+        <h3>${a.title}</h3>
+        <p>${a.excerpt}</p>
+      </div>
+    </article>
+  `).join('');
+}
+
+// =========================================================
+// Articles — page Technologie (données provisoires)
+// =========================================================
+const technologieArticles = [
+  { date: "À venir", title: "Le robot 4WD bientôt finalisé", excerpt: "Notre premier projet vitrine, un système embarqué autonome, entre dans sa phase finale de tests." },
+  { date: "À venir", title: "Deux nouveaux prototypes documentés", excerpt: "Objectif de fin d'année : au moins deux prototypes fonctionnels, présentés au club électronique." },
+  { date: "À venir", title: "Prestations de services technologiques ouvertes", excerpt: "SadIss Technologie propose désormais ses services d'installation et de maintenance aux particuliers et entreprises." }
+];
+
+const technologieGrid = document.getElementById('technologieArticles');
+if (technologieGrid) {
+  technologieGrid.innerHTML = technologieArticles.map(a => `
     <article class="article-card">
       <div class="article-thumb"></div>
       <div class="article-body">
@@ -81,26 +119,47 @@ if (cosmetiqueGrid) {
 }
 
 // =========================================================
-// Modale de paiement — documents payants
-// TODO: remplacer les numéros "À communiquer" par les vrais numéros Moov/MTN/Celtiis,
-// et brancher un vrai lien de téléchargement une fois le paiement automatisé
-// (ex: via une passerelle comme Kkiapay ou FedaPay, à décider).
+// Articles — page Élevage (données provisoires)
 // =========================================================
-const payModal = document.getElementById('payModal');
-const payClose = document.getElementById('payClose');
-const payDocTitle = document.getElementById('payDocTitle');
-const payDocPrice = document.getElementById('payDocPrice');
+const elevageArticles = [
+  { date: "À venir", title: "Premier lot de poussins", excerpt: "Démarrage avec un carton de 52 poussins, pour lancer l'élevage et l'incubation des œufs." },
+  { date: "À venir", title: "Identification d'un site et d'un gestionnaire", excerpt: "Recherche d'un terrain adapté et d'une personne de confiance pour la gestion quotidienne de la ferme." },
+  { date: "À venir", title: "Sourcing des fournisseurs d'intrants", excerpt: "Comparaison des fournisseurs d'aliments, de vaccins et de médicaments vétérinaires disponibles localement." }
+];
 
-document.querySelectorAll('.doc-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (!payModal) return;
-    payDocTitle.textContent = btn.dataset.doc;
-    payDocPrice.textContent = btn.dataset.price;
-    payModal.hidden = false;
-  });
-});
+const elevageGrid = document.getElementById('elevageArticles');
+if (elevageGrid) {
+  elevageGrid.innerHTML = elevageArticles.map(a => `
+    <article class="article-card">
+      <div class="article-thumb"></div>
+      <div class="article-body">
+        <span class="article-date">${a.date}</span>
+        <h3>${a.title}</h3>
+        <p>${a.excerpt}</p>
+      </div>
+    </article>
+  `).join('');
+}
 
-payClose?.addEventListener('click', () => { payModal.hidden = true; });
-payModal?.addEventListener('click', (e) => {
-  if (e.target === payModal) payModal.hidden = true;
-});
+// =========================================================
+// Articles — page Agriculture (données provisoires)
+// =========================================================
+const agricultureArticles = [
+  { date: "À venir", title: "Essais de thermocompression du marc de cajou", excerpt: "Recherches en cours sur la valorisation du marc de pomme de cajou en matériau biodégradable." },
+  { date: "À venir", title: "Premiers capteurs de sol en test", excerpt: "Prototypage de capteurs pour mesurer l'humidité et le pH sur le terrain." },
+  { date: "À venir", title: "Vers l'automatisation des tâches agricoles", excerpt: "Identification des tâches répétitives à automatiser en priorité." }
+];
+
+const agricultureGrid = document.getElementById('agricultureArticles');
+if (agricultureGrid) {
+  agricultureGrid.innerHTML = agricultureArticles.map(a => `
+    <article class="article-card">
+      <div class="article-thumb"></div>
+      <div class="article-body">
+        <span class="article-date">${a.date}</span>
+        <h3>${a.title}</h3>
+        <p>${a.excerpt}</p>
+      </div>
+    </article>
+  `).join('');
+}

@@ -239,24 +239,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display:grid; grid-template-columns: repeat(3,1fr); gap: 28px;
 }
 .article-card{
-  background: rgba(246,241,228,0.06);
-  border: 1px solid rgba(246,241,228,0.16);
+  background: var(--cream-2);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow:hidden;
   display:flex; flex-direction:column;
-  transition: border-color .25s ease, transform .25s ease;
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
 }
-.article-card:hover{ border-color: var(--gold-light); transform: translateY(-4px); }
+.article-card:hover{ border-color: var(--emerald); transform: translateY(-4px); box-shadow: 0 18px 40px -22px rgba(10,59,44,0.3); }
 .article-thumb{
   height: 150px;
   background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-deep) 100%);
   position:relative;
 }
 .article-body{ padding: 22px 22px 26px; display:flex; flex-direction:column; gap:12px; flex:1; }
-.article-date{ font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform:uppercase; color: var(--gold-light); }
-.article-card h3{ font-size: 1.05rem; color: var(--cream); }
-.article-card p{ color: rgba(246,241,228,0.68); font-size: 0.9rem; flex:1; }
-.article-card .read{ font-family: var(--font-mono); font-size: 0.7rem; text-transform:uppercase; letter-spacing:0.08em; color: var(--gold-light); }
+.article-date{ font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform:uppercase; color: var(--gold); }
+.article-card h3{ font-size: 1.05rem; color: var(--emerald-deep); }
+.article-card p{ color: var(--ink-soft); font-size: 0.9rem; flex:1; }
+.article-card .read{ font-family: var(--font-mono); font-size: 0.7rem; text-transform:uppercase; letter-spacing:0.08em; color: var(--gold); }
+
+/* Variante sombre : uniquement pour la section Actualités de l'accueil (fond vert) */
+.articles .article-card{ background: rgba(246,241,228,0.06); border-color: rgba(246,241,228,0.16); }
+.articles .article-card:hover{ border-color: var(--gold-light); box-shadow:none; }
+.articles .article-date,
+.articles .article-card .read{ color: var(--gold-light); }
+.articles .article-card h3{ color: var(--cream); }
+.articles .article-card p{ color: rgba(246,241,228,0.68); }
 
 @media (max-width: 880px){
   .article-grid{ grid-template-columns: 1fr; }
@@ -489,3 +497,31 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .doc-status.available{ background: rgba(20,107,76,0.12); color: var(--emerald); }
 .doc-status.soon{ background: rgba(192,146,47,0.14); color: var(--gold); }
 .btn[disabled]{ opacity: 0.5; cursor: not-allowed; }
+
+
+/* Mise en forme des vidéos des réalis  ations effectuées*/
+
+.tech-video{
+  display:block;
+  position: relative;
+  height: 150px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--emerald-bright), var(--emerald-deep));
+}
+.tech-video img{
+  width:100%; height:100%; object-fit: cover;
+  transition: transform .3s ease;
+}
+.tech-video:hover img{ transform: scale(1.06); }
+.play-badge{
+  position:absolute; top:50%; left:50%; transform: translate(-50%,-50%);
+  width:48px; height:48px; border-radius:50%;
+  background: rgba(12,20,16,0.55);
+  color: var(--cream);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 1rem;
+  transition: background .2s ease, transform .2s ease;
+}
+.tech-video:hover .play-badge{ background: var(--gold); transform: translate(-50%,-50%) scale(1.08); }
